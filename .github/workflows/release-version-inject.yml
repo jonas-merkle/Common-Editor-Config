@@ -1,0 +1,75 @@
+name: Release – Inject Version and Publish Files
+
+on:
+  release:
+    types: [published] # runs when you publish a GitHub Release
+  workflow_dispatch: # allow manual runs for testing
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # needed for uploading release assets
+      actions: read
+
+    env:
+      FILES: |
+        .editorconfig
+        .clang-format
+        .prettierrc.js
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine version from tag
+        id: ver
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TAG="${{ github.event.release.tag_name }}"
+          else
+            # fallback for manual dispatch; use latest tag or 'v0.0.0-dev'
+            TAG="$(git describe --tags --abbrev=0 2>/dev/null || echo v0.0.0-dev)"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Using tag: $TAG"
+
+      - name: Create dist folder with injected version
+        run: |
+          mkdir -p dist
+          echo "$FILES" | while read -r f; do
+            [ -z "$f" ] && continue
+            if [ -f "$f" ]; then
+              # Replace @VERSION@ tokens and write into dist/
+              sed "s/@VERSION@/${{ steps.ver.outputs.tag }}/g" "$f" > "dist/$(basename "$f")"
+            else
+              echo "WARNING: file not found: $f"
+            fi
+          done
+
+      - name: Upload artifact (for CI consumers)
+        uses: actions/upload-artifact@v4
+        with:
+          name: common-editor-config-${{ steps.ver.outputs.tag }}
+          path: dist/
+
+      - name: Zip files for release asset
+        run: |
+          cd dist
+          zip -r ../common-editor-config-${{ steps.ver.outputs.tag }}.zip .
+          cd -
+
+      - name: Attach assets to GitHub Release
+        if: ${{ github.event_name == 'release' }}
+        run: |
+          gh release upload "${{ steps.ver.outputs.tag }}" \
+            "common-editor-config-${{ steps.ver.outputs.tag }}.zip" \
+            dist/.editorconfig \
+            dist/.clang-format \
+            dist/.prettierrc.js \
+            --clobber
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
