@@ -1,0 +1,90 @@
+# -------------------------------------------------------------------
+# Common Editor Config
+# Repository : https://github.com/jonas-merkle/Common-Editor-Config
+# Author     : Jonas Merkle
+# License    : GNU Lesser General Public License v3.0 (LGPLv3)
+# Versioning : Semantic Versioning (SemVer) via Git tags
+# Version    : @VERSION@
+# Description: clang-format style configuration for C/C++/ObjC code.
+# © 2025 Jonas Merkle. Licensed under the LGPLv3.
+# -------------------------------------------------------------------
+
+BasedOnStyle: LLVM
+Language: Cpp
+
+# Files: C/C++ headers & impl
+# clang-format automatically applies to: *.c, *.cc, *.cpp, *.cxx, *.h, *.hh, *.hpp, *.hxx, etc.
+
+# Line length matches max_line_length = 100
+ColumnLimit: 100
+
+# Indentation & tabs
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+IndentCaseLabels: true
+
+# Braces & layout (sane defaults; tweak to taste)
+BreakBeforeBraces: Attach # common C/C++ house style
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: false
+
+# Spacing
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpacesInAngles: false
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpaceAfterCStyleCast: false
+SpacesBeforeTrailingComments: 1
+Cpp11BracedListStyle: true
+
+# Pointers & references
+DerivePointerAlignment: false
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Includes (basic, non-invasive sorting)
+IncludeBlocks: Preserve
+SortIncludes: true
+IncludeCategories:
+  - Regex: "^<[^/]+>$" # system headers
+    Priority: 1
+  - Regex: "^<.*/.*>$" # other angle-bracket includes
+    Priority: 2
+  - Regex: '^".*"$' # project-local
+    Priority: 3
+
+# Preprocessor
+IndentPPDirectives: AfterHash
+MacroBlockBegin: ""
+MacroBlockEnd: ""
+
+# Namespaces & access modifiers
+NamespaceIndentation: All
+AccessModifierOffset: -4
+
+# Trailing commas & braces
+InsertTrailingCommas: None
+
+# Keep code tidy
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+
+# Newer language defaults
+Standard: c++20
+
+# Line endings — keep Linux LF to match .editorconfig
+UseCRLF: false
+# Optional per-language overrides (if you mix C files)
+# ---
+# Language: C
+# BasedOnStyle: LLVM
+# ColumnLimit: 100
+# IndentWidth: 4
+# TabWidth: 4
+# UseTab: Never
+# BreakBeforeBraces: Attach
