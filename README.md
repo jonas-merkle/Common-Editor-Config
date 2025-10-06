@@ -108,13 +108,13 @@ Defines **Prettier** configuration for web and scripting languages.
 
 ## 🚀 Usage
 
-### 🧩 1. Clone or add as a submodule
+### 🧩 1. Add the configuration files to your project
+
+Add the configuration files as a git submodule:
 
 ```bash
 git submodule add https://github.com/jonas-merkle/Common-Editor-Config.git common-editor-config
 ```
-
-````
 
 Or simply copy the configuration files into your project root:
 
@@ -253,4 +253,3 @@ If you find this project useful or have suggestions for improvement:
 ---
 
 **© 2025 Jonas Merkle — Licensed under the LGPLv3**
-````
