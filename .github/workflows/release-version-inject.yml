@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -46,15 +46,18 @@ jobs:
               # Replace @VERSION@ tokens and write into dist/
               sed "s/@VERSION@/${{ steps.ver.outputs.tag }}/g" "$f" > "dist/$(basename "$f")"
             else
-              echo "WARNING: file not found: $f"
+              echo "::error::file not found: $f"
+              exit 1
             fi
           done
 
       - name: Upload artifact (for CI consumers)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: common-editor-config-${{ steps.ver.outputs.tag }}
           path: dist/
+          include-hidden-files: true
+          if-no-files-found: error
 
       - name: Zip files for release asset
         run: |
