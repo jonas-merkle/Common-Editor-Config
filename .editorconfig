@@ -186,13 +186,22 @@ dotnet_diagnostic.IDE0090.severity = suggestion # 'new()' with target-typed
 
 # -------------------------------------------------------------------
 # LaTeX (TeX/LaTeX/BibTeX)
-# Trailing spaces can be meaningful (line breaks with two spaces), so keep them.
 # -------------------------------------------------------------------
-[*.{tex,sty,cls,bib,latex}]
+[*.{tex,latex,ltx,sty,cls,clo,dtx,ins,def,fd,tikz,pgf,Rnw,Rtex}]
 indent_style = space
 indent_size = 2
-trim_trailing_whitespace = false
+trim_trailing_whitespace = true
 max_line_length = off
+
+[*.{bib,bbx,cbx,lbx,bst,ist}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+max_line_length = off
+
+[{.latexmkrc,latexmkrc}]
+indent_style = space
+indent_size = 4
 
 # -------------------------------------------------------------------
 # SHELL / SCRIPTS / MAKE

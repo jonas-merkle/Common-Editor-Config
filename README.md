@@ -51,14 +51,15 @@ Defines universal, language-aware formatting rules such as indentation style, ch
 - Default: **UTF-8**, **LF** line endings, **4-space indentation**
 - **2-space indentation** for web files, markup, YAML, JSON, Markdown, LaTeX, etc.
 - **Final newline enforced** for POSIX compatibility
-- **Trailing whitespace trimmed** (except Markdown/LaTeX/CSV)
+- **Trailing whitespace trimmed** (except Markdown/CSV)
 - Includes **language-specific overrides** for:
   - C / C++
   - C#
   - JavaScript / TypeScript
   - HTML / CSS / SCSS / Less
   - JSON / YAML / TOML
-  - Markdown, LaTeX
+  - Markdown
+  - LaTeX / BibTeX (`.tex`, `.sty`, `.cls`, `.dtx`, `.bib`, `.bst`, `latexmkrc`, …)
   - Python, Shell, PowerShell
   - CSV, SQL, XML, etc.
 
