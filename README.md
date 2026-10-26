@@ -4,7 +4,7 @@
 This repository provides a consistent, professional, and cross-platform code style setup for a wide range of programming languages and text formats — ensuring clean, readable, and standardized source code across editors and teams.
 
 > 📦 Repository: [https://github.com/jonas-merkle/Common-Editor-Config](https://github.com/jonas-merkle/Common-Editor-Config)  
-> 🧾 License: [LGPLv3](./LICENSE)  
+> 🧾 License: [LGPLv3+](./LICENSE)  
 > 🧑‍💻 Author: [Jonas Merkle](https://github.com/jonas-merkle)
 
 ---
@@ -207,9 +207,10 @@ Each configuration includes this header template:
 ```text
 # Common Editor Config
 # Repository : https://github.com/jonas-merkle/Common-Editor-Config
-# License    : LGPLv3
+# License    : LGPLv3+
 # Versioning : Semantic Versioning (SemVer) via Git tags
 # Version    : @VERSION@
+# SPDX-License-Identifier: LGPL-3.0-or-later
 ```
 
 When a release is published, `@VERSION@` is automatically replaced by the actual tag (e.g. `v1.0.0`).
@@ -236,10 +237,13 @@ curl -LO "https://raw.githubusercontent.com/jonas-merkle/Common-Editor-Config/v1
 
 ## ⚖️ License
 
-This project is licensed under the **GNU Lesser General Public License v3.0 (LGPLv3)**.
+This project is licensed under the **GNU Lesser General Public License v3.0 or later (LGPLv3+)**
+(SPDX: `LGPL-3.0-or-later`).
 You are free to use, modify, and distribute these configurations under the same terms.
 
-See the [LICENSE](./LICENSE) file for details.
+The LGPLv3 supplements the GNU General Public License v3.0, so both texts are included:
+see [LICENSE](./LICENSE) (LGPLv3) and [COPYING](./COPYING) (GPLv3) for details.
+Release downloads include both files.
 
 ---
 
@@ -253,4 +257,4 @@ If you find this project useful or have suggestions for improvement:
 
 ---
 
-**© 2025 Jonas Merkle — Licensed under the LGPLv3**
+**© 2025–2026 Jonas Merkle — Licensed under the LGPLv3 or later**

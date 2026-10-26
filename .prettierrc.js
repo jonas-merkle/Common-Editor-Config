@@ -3,11 +3,12 @@
  * Common Editor Config
  * Repository : https://github.com/jonas-merkle/Common-Editor-Config
  * Author     : Jonas Merkle
- * License    : GNU Lesser General Public License v3.0 (LGPLv3)
+ * License    : GNU Lesser General Public License v3.0 or later (LGPLv3+)
  * Versioning : Semantic Versioning (SemVer) via Git tags
  * Version    : @VERSION@
  * Description: Prettier configuration for web and scripting files.
- * © 2025 Jonas Merkle. Licensed under the LGPLv3.
+ * © 2025–2026 Jonas Merkle. Licensed under the LGPLv3 or later.
+ * SPDX-License-Identifier: LGPL-3.0-or-later
  * -------------------------------------------------------------------
  */
 export default {

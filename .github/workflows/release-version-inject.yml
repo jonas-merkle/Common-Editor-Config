@@ -18,6 +18,8 @@ jobs:
         .editorconfig
         .clang-format
         .prettierrc.js
+        LICENSE
+        COPYING
 
     steps:
       - name: Checkout
@@ -73,6 +75,8 @@ jobs:
             dist/.editorconfig \
             dist/.clang-format \
             dist/.prettierrc.js \
+            dist/LICENSE \
+            dist/COPYING \
             --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
